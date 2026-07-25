@@ -12,6 +12,16 @@ export const sequelize = new Sequelize(
     port: Number(process.env.DB_PORT) || 3306,
     dialect: "mysql",
     logging: false,
+
+    dialectOptions: process.env.DB_HOST?.includes("aivencloud.com")
+      ? {
+          ssl: {
+            require: true,
+            rejectUnauthorized: false,
+          },
+        }
+      : {},
+
     pool: {
       max: 10,
       min: 0,
