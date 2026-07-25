@@ -1,0 +1,14 @@
+node_modules
+dist
+.env
+venv/
+genearte-test-case.js
+save-test-case.js
+test-case-excel-conversion.js
+
+# dependencies
+/node_modules
+
+# environment variables
+.env
+
