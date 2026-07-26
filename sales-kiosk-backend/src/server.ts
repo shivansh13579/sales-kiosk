@@ -14,6 +14,8 @@ import { postBooking } from "./controllers/inventory.controller";
 
 import { registerSocketHandlers } from "./sockets";
 import { setIO } from "./sockets/ioInstance";
+import { Video } from "./models";
+import { seedDatabase } from "./seed";
 
 dotenv.config();
 
@@ -50,6 +52,16 @@ async function start() {
     // assignment-scale app.
     await sequelize.sync();
     console.log("Models synced.");
+
+    const videoCount = await Video.count();
+
+    if (videoCount === 0) {
+      console.log("Database is empty. Seeding...");
+
+      await seedDatabase();
+
+      console.log("Database seeded successfully.");
+    }
 
     server.listen(PORT, () => {
       console.log(`Sales Kiosk backend running on port ${PORT}`);
