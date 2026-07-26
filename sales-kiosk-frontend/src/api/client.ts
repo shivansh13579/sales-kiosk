@@ -16,9 +16,16 @@ async function request<T>(path: string, options?: RequestInit): Promise<T> {
 }
 
 export const api = {
-  getGallery: () => request<{ success: boolean; data: import("../types").GalleryImage[] }>("/gallery"),
-  getVideos: () => request<{ success: boolean; data: import("../types").Video[] }>("/videos"),
-  getInventory: () => request<{ success: boolean; data: import("../types").Tower[] }>("/inventory"),
+  getGallery: () =>
+    request<{ success: boolean; data: import("../types").GalleryImage[] }>(
+      "/gallery",
+    ),
+  getVideos: () =>
+    request<{ success: boolean; data: import("../types").Video[] }>("/videos"),
+  getInventory: () =>
+    request<{ success: boolean; data: import("../types").Tower[] }>(
+      "/inventory",
+    ),
 };
 
 export { API_URL };
